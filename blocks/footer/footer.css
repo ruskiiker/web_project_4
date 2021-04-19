@@ -1,0 +1,28 @@
+@import url('__text/footer__text.css');
+
+.footer {
+  margin-top: 68px;
+  margin-bottom: 60px;
+  display: flex;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 21.78px; 
+  color: #545454;
+}
+
+@media screen and (max-width: 879px) {
+  .footer {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .footer {
+    margin: 50px auto 36px;
+    width: 282px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
