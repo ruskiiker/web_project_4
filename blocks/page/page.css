@@ -1,0 +1,23 @@
+.page {
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  background-color: #2A2C2F;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+/* Widths:
+≥ 1280px
+1024px-1280px
+768px-1024px
+425px-768px
+≤ 425px */

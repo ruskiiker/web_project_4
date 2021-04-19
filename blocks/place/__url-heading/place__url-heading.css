@@ -1,0 +1,19 @@
+.place__url-heading {
+  margin-bottom: 12px;
+  width: 90%;
+  align-self: flex-start;
+  font-family: 'Inter', 'Trebuchet MS', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+@media screen and (min-width: 1024px) {
+  .place__url-heading {
+    line-height: 20px;
+  }
+}
