@@ -1,0 +1,28 @@
+.dialogue-window__form-x {
+  top: -48px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-image: url('../../../images/close-icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: none;
+  color: #fff;
+  background-color: initial;
+  right: -48px;
+  cursor: pointer;
+  transition: all .5s linear;
+}
+
+.dialogue-window__form-x:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 644px) {
+  .dialogue-window__form-x {
+    top: -46px;
+    right: -2px;
+    background-image: url('../../../images/close-icon-sm.svg');
+  }
+}
