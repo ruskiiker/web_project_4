@@ -1,16 +1,20 @@
-# Project 4: Around The U.S.
+# Practicum Project 4
+A simple, responsive front-end webpage containing image cards with photos of the US, enabling to edit basic information.
 
-### Overview
+## Overview
+The webpage was developed fully based in a design on Figma.
 
-* Figma
-* Images
+## Usage
+BEM Methodology https://en.bem.info
+CSS3
+HTML5
+ECMAScript
 
-**Figma**
+## Contributing
+This project has been individually developed by 'ruskiiker', and is public in the framework of the Yandex Practicum web-programming course.
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+## Project Link
+https://ruskiiker.github.io/web_project_4
 
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-
-Have fun with JavaScript!
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
