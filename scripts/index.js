@@ -33,6 +33,17 @@ function saveProfile(evt) {
   closeProfile();
 }
 
+
+app.get('/', function(req,res) {
+  res.send(browserRefresh('index.html'));
+});
+
+function browserRefresh(filePath) {
+  var html = fs.readFileSync(filePath);
+  var $ = cheerio.load(html);
+  $('body').append(`<script src="${process.env.BROWSER_REFRESH_URL}"></script>`);
+  return $.html();
+}
 function activatedw() {
   popup.classList.add("popup_active");
   editProfile();
@@ -47,3 +58,14 @@ Array.from(like).forEach(function (element) {
 dwForm.addEventListener('click', activatedw);
 dwX.addEventListener('click', closeProfile);
 editdwForm.addEventListener('submit', saveProfile);
+
+app.get('/', function(req,res) {
+  res.send(browserRefresh('index.html'));
+});
+
+function browserRefresh(filePath) {
+  var html = fs.readFileSync(filePath);
+  var $ = cheerio.load(html);
+  $('body').append(`<script src="${process.env.BROWSER_REFRESH_URL}"></script>`);
+  return $.html();
+}
