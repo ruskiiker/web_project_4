@@ -19,8 +19,20 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .dialogue-window {
+    width: 70%;
+  }
+}
+
 @media screen and (max-width: 390px) {
   .modal {
-    width: 90vw;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal {
+    width: 90%;
   }
 }
