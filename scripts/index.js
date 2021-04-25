@@ -16,6 +16,12 @@ function updateProfile() {
   };
 }
 
+function editProfile() {
+  updateProfile();
+  personNameInput.value = profile.name;
+  personDescriptionInput.value = profile.about;
+}
+
 function closeProfile() {
   popup.classList.remove("popup_active");
 }
