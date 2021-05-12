@@ -7,7 +7,6 @@
 @import url('../blocks/card/card.css');
 @import url('../blocks/places/places.css');
 @import url('../blocks/popup/popup.css');
-@import url('../blocks/popup/__content/_type/popup__content_type_image.css');
 @import url('../blocks/popup/__close/popup__close.css');
 @import url('../blocks/popup/__close/_type/popup__close_type_edit.css');
 @import url('../blocks/popup/__close/_type/popup__close_type_add.css');

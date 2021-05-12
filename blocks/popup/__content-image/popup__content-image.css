@@ -1,4 +1,4 @@
-.popup__content_type_image {
+.popup__content-image {
   background-color: transparent;
   border-radius: 10px;
   position: relative;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 568px) {
-  .popup__content_type_image {
+  .popup__content-image {
     width: 100%;
     max-width: calc(100% - 80px);
     margin-top: 40px;
