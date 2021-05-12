@@ -1,12 +1,11 @@
 .popup__close_type_image {
-  top: -48px;
-  right: -48px;
+  top: -28px;
+  right: -4px;
 }
 
-@media screen and (max-width: 644px) {
-  .popup__close_close_type_image {
-    top: -46px;
+@media screen and (max-width: 580px) {
+  .popup__close_type_image {
+    top: -24px;
     right: -2px;
-    background-image: url(../../../../images/close-icon-sm.svg);
   }
 }

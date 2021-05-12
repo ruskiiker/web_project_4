@@ -1,0 +1,14 @@
+.popup__content_type_image {
+  background-color: transparent;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 568px) {
+  .popup__content_type_image {
+    width: 100%;
+    max-width: calc(100% - 80px);
+    margin-top: 40px;
+  }
+}
