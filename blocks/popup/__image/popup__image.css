@@ -1,6 +1,7 @@
 .popup__image {
   max-width: 816px;
   max-height: 540px;
+  width: 100%;
   background: 0 0 no-repeat transparent;
 }
 
@@ -13,13 +14,7 @@
 
 @media screen and (max-width: 400px) {
   .popup__image {
-    max-width: 300px;
-    max-height: 330px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
+    max-width: 400x;
+    max-height: 350px;
   }
 }
