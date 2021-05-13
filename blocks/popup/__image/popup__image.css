@@ -4,7 +4,7 @@
   background: 0 0 no-repeat transparent;
 }
 
-@media screen and (max-width: 644px) {
+@media screen and (max-width: 800px) {
   .popup__image {
     max-width: 430px;
     max-height: 330px;
