@@ -1,5 +1,4 @@
 // Variables
-const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupTypeImage = document.querySelector('.popup_type_image');
@@ -22,9 +21,9 @@ const addForm = document.querySelector('.popup_type_add');
 const cardList = document.querySelector('.places__list');
 const card = document.querySelector('.card');
 
-editButton.addEventListener('click', activateEditModal);
-addButton.addEventListener('click', activateAddModal);
-modalEditClose.addEventListener('click', closeEditProfile);
+editButton.addEventListener('click', openEditCardPopup);
+addButton.addEventListener('click', openAddCardPopup);
+modalEditClose.addEventListener('click', closefillEditProfilePopupInputs);
 modalAddClose.addEventListener('click', closeAddProfile);
 modalImageClose.addEventListener('click', closeImageProfile);
 editForm.addEventListener('submit', saveProfile);
@@ -35,8 +34,7 @@ const profile = {
   about: aboutMe.textContent,
 };
 
-const initialCards = [
-  {
+const initialCards = [{
     name: 'Yosemite Valley',
     link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
   },
@@ -62,24 +60,22 @@ const initialCards = [
   },
 ];
 
-const places__list = document.querySelector('.places__list');
-
 // Functions
-function renderCard(card, wrapper) { 
+function renderCard(card, wrapper) {
   wrapper.prepend(createCard(card));
   /// Prepend the card element to the <ul class=".places-list"> (wrapper).
 }
 
 initialCards.forEach((card) => {
-  renderCard(card, cardList); 
+  renderCard(card, cardList);
   // CardList also = <ul class=".places-list">.
 });
 
 function createCard(card) {
   // Reference the template element.
-  const cardTemplate = document.querySelector('#card-template').content.querySelector('.card'); 
+  const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');
   // Create the card element.
-  const cardElement = cardTemplate.cloneNode(true); 
+  const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const cardTitle = cardElement.querySelector('.card__title');
   const deleteButton = cardElement.querySelector('.card__delete-button');
@@ -87,6 +83,7 @@ function createCard(card) {
 
   cardTitle.textContent = card.name;
   cardImage.style.backgroundImage = `url(${card.link})`;
+  cardImage.alt = card.name;
 
   deleteButton.addEventListener('click', () => {
     const listItem = deleteButton.closest('.card');
@@ -103,7 +100,7 @@ function createCard(card) {
     popupImage.alt = card.name;
     popupImageTitle.textContent = card.name;
 
-    activateImageModal(popupImage);
+    openImagePopup(popupImage);
   });
 
   return cardElement;
@@ -113,7 +110,7 @@ function saveProfile(event) {
   event.preventDefault();
   title.textContent = nameInput.value;
   aboutMe.textContent = jobInput.value;
-  closeEditProfile();
+  closefillEditProfilePopupInputs();
 }
 
 function saveAddCard(event) {
@@ -128,7 +125,7 @@ function saveAddCard(event) {
   linkInput.value = ''
 }
 
-function editProfile() {
+function fillEditProfilePopupInputs() {
   nameInput.value = profile.name;
   jobInput.value = profile.about;
 }
@@ -137,13 +134,11 @@ function closePopup(popup) {
   popup.classList.remove('popup_active');
 }
 
-function closeEditProfile() {  
-  console.log('AA');
+function closefillEditProfilePopupInputs() {
   closePopup(popupEdit)
 }
 
 function closeAddProfile() {
-  console.log('A');
   closePopup(popupAdd)
 }
 
@@ -155,15 +150,15 @@ function openPopup(popup) {
   popup.classList.add('popup_active');
 }
 
-function activateEditModal() {
+function openEditCardPopup() {
   openPopup(popupEdit);
-  editProfile();
+  fillEditProfilePopupInputs();
 }
 
-function activateAddModal() {
+function openAddCardPopup() {
   openPopup(popupAdd);
 }
 
-function activateImageModal() {
+function openImagePopup() {
   openPopup(popupTypeImage);
 }
