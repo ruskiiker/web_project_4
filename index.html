@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Web Project 5</title>
+    <title>Web Project 6</title>
 </head>
 
 <body class="page">
@@ -38,11 +38,14 @@
             <div class="popup__content">
                 <button class="popup__close popup__close_type_edit" type="button"></button>
                 <h3 class="popup__title">Edit profile</h3>
-                <form class="popup__form" name="edit-profile">
+                <form id="profile-name" class="popup__form popup__form_type_edit" name="edit-profile">
                     <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Name"
-                        required>
-                    <input type="text" name="description" class="popup__input popup__input_type_description"
-                        placeholder="Profession" required>
+                        minlength="2" maxlength="40" required novalidate>
+                    <span id="profile-name-error" class="popup__error"></span>
+                    <input id="profile-text" type="text" name="description"
+                        class="popup__input popup__input_type_description" placeholder="Profession" minlength="2"
+                        maxlength="200" required novalidate>
+                    <span id="profile-text-error" class="popup__error"></span>
                     <button type="submit" class="button popup__button">Save</button>
                 </form>
             </div>
@@ -51,11 +54,13 @@
             <div class="popup__content">
                 <button class="popup__close popup__close_type_add " type="button"></button>
                 <h3 class="popup__title">New place</h3>
-                <form class="popup__form" name="edit-profile">
+                <form class="popup__form popup__form_type_add" name="edit-profile">
                     <input type="text" name="name" class="popup__input popup__input_type_caption" placeholder="Title"
-                        required>
-                    <input type="url" name="description" class="popup__input popup__input_type_link"
-                        placeholder="Image link" required>
+                        minlength="1" maxlength="30" required novalidate>
+                    <span id="card-title-error" class="popup__error"></span>
+                    <input id="card-url" type="url" name="description" class="popup__input popup__input_type_link"
+                        placeholder="URL" required novalidate>
+                    <span id="card-url-error" class="popup__error"></span>
                     <button type="submit" class="button popup__button">Create</button>
                 </form>
             </div>
@@ -82,7 +87,8 @@
             </div>
         </li>
     </template>
-    <script src="scripts/index.js"></script>    
+    <script src="scripts/index.js"></script>
+    <script src="scripts/validation.js"></script>
 </body>
 
 </html>

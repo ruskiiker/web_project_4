@@ -1,6 +1,8 @@
 // Variables
+const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
+const popupActive = document.querySelector('.popup_active');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-caption');
@@ -21,43 +23,35 @@ const addForm = document.querySelector('.popup_type_add');
 const cardList = document.querySelector('.places__list');
 const card = document.querySelector('.card');
 
-editButton.addEventListener('click', openEditCardPopup);
-addButton.addEventListener('click', openAddCardPopup);
-modalEditClose.addEventListener('click', closefillEditProfilePopupInputs);
-modalAddClose.addEventListener('click', closeAddProfile);
-modalImageClose.addEventListener('click', closeImageProfile);
-editForm.addEventListener('submit', saveProfile);
-addForm.addEventListener('submit', saveAddCard);
-
 const profile = {
   name: title.textContent,
   about: aboutMe.textContent,
 };
 
 const initialCards = [{
-    name: 'Yosemite Valley',
-    link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
-  },
-  {
-    name: 'Lake Louise',
-    link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
-  },
-  {
-    name: 'Bald Mountains',
-    link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
-  },
-  {
-    name: 'Latemar',
-    link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
-  },
-  {
-    name: 'Vanoise National Park',
-    link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
-  },
-  {
-    name: 'Lago di Braies',
-    link: 'https://code.s3.yandex.net/web-code/lago.jpg',
-  },
+  name: 'Yosemite Valley',
+  link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
+},
+{
+  name: 'Lake Louise',
+  link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
+},
+{
+  name: 'Bald Mountains',
+  link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
+},
+{
+  name: 'Latemar',
+  link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
+},
+{
+  name: 'Vanoise National Park',
+  link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
+},
+{
+  name: 'Lago di Braies',
+  link: 'https://code.s3.yandex.net/web-code/lago.jpg',
+},
 ];
 
 // Functions
@@ -95,11 +89,9 @@ function createCard(card) {
   });
 
   cardImage.addEventListener('click', () => {
-
     popupImage.src = card.link;
     popupImage.alt = card.name;
     popupImageTitle.textContent = card.name;
-
     openImagePopup(popupImage);
   });
 
@@ -130,35 +122,71 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_active');
-}
-
-function closefillEditProfilePopupInputs() {
-  closePopup(popupEdit)
-}
-
-function closeAddProfile() {
-  closePopup(popupAdd)
-}
-
-function closeImageProfile() {
-  closePopup(popupTypeImage)
-}
-
+// Opens popups.
 function openPopup(popup) {
   popup.classList.add('popup_active');
 }
 
+// Opens edit popup.
 function openEditCardPopup() {
   openPopup(popupEdit);
   fillEditProfilePopupInputs();
 }
 
+// Opens add popup.
 function openAddCardPopup() {
   openPopup(popupAdd);
 }
 
+//Opens image popup.
 function openImagePopup() {
   openPopup(popupTypeImage);
 }
+
+// Closes popups.
+function closePopup(popup) {
+  popup.classList.remove('popup_active');
+}
+
+// Closes popups with Esc.
+window.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupEdit) || closePopup(popupAdd) || closePopup(popupTypeImage);
+  }
+  else return
+})
+
+// Closes edit popup.
+function closefillEditProfilePopupInputs() {
+  closePopup(popupEdit)
+}
+
+// Closes add popup.
+function closeAddProfile() {
+  closePopup(popupAdd)
+}
+
+// Closes image popup.
+function closeImageProfile() {
+  closePopup(popupTypeImage)
+}
+
+// Closes image popup when clicking anywhere but on the image.
+popupTypeImage.addEventListener('click', (evt) => {
+  if (evt.target === popupTypeImage) {
+    closeImageProfile()
+  }
+  else return
+})
+
+editButton.addEventListener('click', openEditCardPopup);
+addButton.addEventListener('click', openAddCardPopup);
+modalEditClose.addEventListener('click', closefillEditProfilePopupInputs);
+modalAddClose.addEventListener('click', closeAddProfile);
+modalImageClose.addEventListener('click', closeImageProfile);
+editForm.addEventListener('submit', saveProfile);
+addForm.addEventListener('submit', saveAddCard);
+
+//Change 1: Close modals with Esc
+//Change 2: Two toggle windows: open and close
+//Change 3: Replace calling toggle with calling close and open
