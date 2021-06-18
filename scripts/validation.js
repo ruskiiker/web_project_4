@@ -9,11 +9,11 @@ enableValidation({
 
 const enableValidation = (settings) => {
     const formElements = [...document.querySelectorAll(settings.formSelector)];
-    formElements.forEach(formElement) => {
-    formEl.addEventListener('submit', (evt) => evt.preventDefault());
-    // Grab each one of the inputs.
-    setEventListeners(formElement, settings);
-});
+    formElements.forEach((formElement) => {
+        formElement.addEventListener('submit', (evt) => evt.preventDefault());
+        // Grab each one of the inputs.
+        setEventListeners(formElement, settings);
+    });
 };
 
 const showInputError = (input, formElement, { errorClass }) => {
@@ -40,28 +40,29 @@ const checkInputValidity = (formElement, input, settings) => {
     }
 };
 
-const hasValidInputs = (inputList) =>
+const hasValidInputs = (inputList) => {
     inputList.every((input) => input.validity.valid === true);
 
-const toggleButton = (inputList, button, settings) => {
-    if hasValidInputs(inputList)) {
-        // Make button enabled.
-        button.disabled = false;
-    } else {
-        // make button disabled.
-        button.disabled = true;
-        button.classList.add(settings.inactiveButtonCLass);
+    const toggleButton = (inputList, button, settings) => {
+        if (hasValidInputs(inputList)) {
+            // Make button enabled.
+            button.disabled = false;
+        } else {
+            // make button disabled.
+            button.disabled = true;
+            button.classList.add(settings.inactiveButtonCLass);
+        }
     }
-}
 
-const setEventListeners = (formElement, settings) => {
-    const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
-    const submitButton = formElement.querySelector(settings.submitButtonSelector);
-    inputList.forEach(input) => {
-    input.addEventListener('input', (evt) => {
-        // Check validity.
-        checkInputValidity(formElement, input, settings);
-        // Toggle the button.
-        toggleButton(inputList, submitButton, settings);
-    });
-};
+    const setEventListeners = (formElement, settings) => {
+        const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
+        const submitButton = formElement.querySelector(settings.submitButtonSelector);
+        inputList.forEach((input) => {
+            input.addEventListener('input', (evt) => {
+                // Check validity.
+                checkInputValidity(formElement, input, settings);
+                // Toggle the button.
+                toggleButton(inputList, submitButton, settings);
+            });
+        });
+    );
