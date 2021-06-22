@@ -10,10 +10,12 @@
 </head>
 
 <body class="page">
+
     <div class="page__content">
         <header class="header">
             <img src="images/logo.svg" alt="Around the U.S." class="header__logo" />
         </header>
+
         <main class="content">
             <section class="profile page__section">
                 <img class="profile__image" src="images/stepan-o-makarov.png" alt="Stepan O. Makarov" />
@@ -31,43 +33,57 @@
                 </ul>
             </section>
         </main>
+
         <footer class="footer">
             <p class="footer__text">&copy; 2021 Around the U.S.</p>
         </footer>
+
         <div class="popup popup_type_edit">
             <div class="popup__content">
                 <button class="popup__close popup__close_type_edit" type="button"></button>
                 <h3 class="popup__title">Edit profile</h3>
-                <form id="profile-name" class="popup__form popup__form_type_edit" name="edit-profile">
-                    <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Name"
-                        minlength="2" maxlength="40" required novalidate>
-                    <span id="profile-name-error" class="popup__error"></span>
-                    <input id="profile-text" type="text" name="description"
-                        class="popup__input popup__input_type_description" placeholder="Profession" minlength="2"
-                        maxlength="200" required novalidate>
-                    <span id="profile-text-error" class="popup__error"></span>
-                    <button type="submit" class="button popup__button">Save</button>
+                <form 
+                class="popup__form popup__form_type_edit" 
+                id="profile-name" 
+                name="edit-profile">
+                    <input 
+                    class="popup__input popup__input_type_name" 
+                    id="profile-name" type="text" name="name" placeholder="Name"
+                    minlength="2" maxlength="40" required novalidate>
+                    <span class="popup__error" id="profile-name-error"></span>
+                    <input 
+                    class="popup__input popup__input_type_description"
+                    id="profile-text" type="text" name="description" placeholder="Profession" 
+                    minlength="2" maxlength="200" required novalidate>
+                    <span class="popup__error" id="profile-text-error"></span>
+                    <button class="button popup__button " type="submit">Save</button>
                 </form>
             </div>
         </div>
+
         <div class="popup popup_type_add">
             <div class="popup__content">
                 <button class="popup__close popup__close_type_add " type="button"></button>
                 <h3 class="popup__title">New place</h3>
                 <form class="popup__form popup__form_type_add" name="edit-profile">
-                    <input type="text" name="name" class="popup__input popup__input_type_caption" placeholder="Title"
+                    <input 
+                        class="popup__input popup__input_type_caption"
+                        id="place-title" type="text" name="name" placeholder="Title"
                         minlength="1" maxlength="30" required novalidate>
-                    <span id="card-title-error" class="popup__error"></span>
-                    <input id="card-url" type="url" name="description" class="popup__input popup__input_type_link"
-                        placeholder="URL" required novalidate>
-                    <span id="card-url-error" class="popup__error"></span>
-                    <button type="submit" class="button popup__button">Create</button>
+                    <span class="popup__error" id="card-title-error"></span>
+                    <input 
+                    class="popup__input popup__input_type_link"
+                    id="place-url" type="url" name="image" placeholder="New Place"
+                     required novalidate>
+                    <span class="popup__error" id="card-url-error"></span>
+                    <button class="button popup__button" type="submit">Create</button>
                 </form>
             </div>
         </div>
+
         <div class="popup popup_type_image">
             <div class="popup__content-image">
-                <button type="button" class="popup__close popup__close_type_image"
+                <button class="popup__close popup__close_type_image" type="button" 
                     aria-label="close-form-button"></button>
                 <figure>
                     <img class="popup__image" src="#" alt="image">
@@ -87,8 +103,10 @@
             </div>
         </li>
     </template>
+
     <script src="scripts/index.js"></script>
     <script src="scripts/validation.js"></script>
+
 </body>
 
 </html>
