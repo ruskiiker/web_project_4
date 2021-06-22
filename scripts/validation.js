@@ -1,15 +1,17 @@
-const showInputError = (input, formElement, { errorClass }) => {
+const showInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = input.validationMessage;
     errorSpan.classList.add({ errorClass });
+    input.classList.add({ inputErrorClass});
 };
 
-const hideInputError = (input, formElement, settings) => {
+const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = '';
     errorSpan.classList.remove({ errorClass });
+    input.classList.remove({ inputErrorClass });
 };
 
 const checkInputValidity = (formElement, input, settings) => {
