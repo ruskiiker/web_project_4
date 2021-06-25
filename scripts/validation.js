@@ -2,16 +2,16 @@ const showInputError = (input, formElement, { errorClass, inputErrorClass }) => 
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = input.validationMessage;
-    errorSpan.classList.add({ errorClass });
-    input.classList.add({ inputErrorClass});
+    errorSpan.classList.add(errorClass);
+    input.classList.add(inputErrorClass);
 };
 
 const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = '';
-    errorSpan.classList.remove({ errorClass });
-    input.classList.remove({ inputErrorClass });
+    errorSpan.classList.remove(errorClass);
+    input.classList.remove(inputErrorClass);
 };
 
 const checkInputValidity = (formElement, input, settings) => {
@@ -26,8 +26,7 @@ const checkInputValidity = (formElement, input, settings) => {
 const hasValidInput = (inputList) =>
     inputList.every((input) => input.validity.valid);
 
-const toggleButton = (inputList, button, settings) => {
-    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+const toggleButton = (inputList, buttonElement, settings) => {   
     if (hasValidInput(inputList)) {
         // Make button enabled.
         buttonElement.disabled = false;
