@@ -26,7 +26,7 @@ const checkInputValidity = (formElement, input, settings) => {
 const hasValidInput = (inputList) =>
     inputList.every((input) => input.validity.valid);
 
-const toggleButton = (inputList, buttonElement, settings) => {   
+const toggleButton = (inputList, buttonElement, settings) => {
     if (hasValidInput(inputList)) {
         // Make button enabled.
         buttonElement.disabled = false;
