@@ -34,7 +34,7 @@ const toggleButton = (inputList, buttonElement, settings) => {
     } else {
         // Make button disabled.
         buttonElement.disabled = true;
-        buttonElement.classList.add(settings.inactiveButtonCLass);
+        buttonElement.classList.add(settings.inactiveButtonClass);
     }
 };
 
