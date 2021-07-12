@@ -1,5 +1,5 @@
 // Variables
-const popup = document.querySelector('.popup');
+const popup = document.getElementsByClassName('popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupActive = document.querySelector('.popup_active');
@@ -118,17 +118,19 @@ function openImagePopup() {
 }
 
 // Closes popups.
-function closePopup(popup) {
+function closePopup(popup) { 
   popup.classList.remove('popup_active');
 }
 
 // Closes popups with Esc.
 window.addEventListener('keydown', (evt) => {
   if (evt.key === 'Escape') {
-    closePopup(popupEdit) || closePopup(popupAdd) || closePopup(popupTypeImage);
+    for (var i = 0; i < popup.length; i++) {     
+        popup[i].classList.remove('popup_active');     
+    }
   }
-  else return
 })
+
 
 // Closes edit popup.
 function closefillEditProfilePopupInputs() {
@@ -136,7 +138,7 @@ function closefillEditProfilePopupInputs() {
 }
 
 // Closes add popup.
-function closeAddProfile() {
+function closeAddProfile() { 
   closePopup(popupAdd)
 }
 
@@ -145,13 +147,14 @@ function closeImageProfile() {
   closePopup(popupTypeImage)
 }
 
-// Closes image popup when clicking anywhere but on the image.
-popupTypeImage.addEventListener('click', (evt) => {
-  if (evt.target === popupTypeImage) {
-    closeImageProfile()
-  }
-  else return
-})
+for (var i = 0; i < popup.length; i++) {
+  popup[i].addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup')) {
+      this.classList.remove('popup_active');
+      evt.stopPropagation();
+    }
+  });
+}
 
 editButton.addEventListener('click', openEditCardPopup);
 addButton.addEventListener('click', openAddCardPopup);
