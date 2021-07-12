@@ -68,7 +68,6 @@ function createCard(card) {
     popupImageTitle.textContent = card.name;
     openImagePopup(popupImage);
   });
-
   return cardElement;
 }
 
@@ -118,19 +117,18 @@ function openImagePopup() {
 }
 
 // Closes popups.
-function closePopup(popup) { 
+function closePopup(popup) {
   popup.classList.remove('popup_active');
 }
 
 // Closes popups with Esc.
 window.addEventListener('keydown', (evt) => {
   if (evt.key === 'Escape') {
-    for (var i = 0; i < popup.length; i++) {     
-        popup[i].classList.remove('popup_active');     
+    for (var i = 0; i < popup.length; i++) {
+      popup[i].classList.remove('popup_active');
     }
   }
 })
-
 
 // Closes edit popup.
 function closefillEditProfilePopupInputs() {
@@ -138,7 +136,7 @@ function closefillEditProfilePopupInputs() {
 }
 
 // Closes add popup.
-function closeAddProfile() { 
+function closeAddProfile() {
   closePopup(popupAdd)
 }
 
@@ -147,6 +145,7 @@ function closeImageProfile() {
   closePopup(popupTypeImage)
 }
 
+// Closes popups with outer click.
 for (var i = 0; i < popup.length; i++) {
   popup[i].addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup')) {
