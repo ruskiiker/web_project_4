@@ -95,7 +95,7 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-// Toggles popup.
+// Toggles popup with Esc.
 function togglePopup(popup) {
   popup?.classList.toggle('popup_active');
   if (popup?.classList.contains('popup_active')) {
@@ -136,9 +136,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_active');
 }
 
-// Closes popups with Esc.
-
-
 // Closes edit popup.
 function closefillEditProfilePopupInputs() {
   closePopup(popupEdit)
@@ -171,7 +168,3 @@ modalAddClose.addEventListener('click', closeAddProfile);
 modalImageClose.addEventListener('click', closeImageProfile);
 editForm.addEventListener('submit', saveProfile);
 addForm.addEventListener('submit', saveAddCard);
-
-//Change 1: Close modals with Esc
-//Change 2: Two toggle windows: open and close
-//Change 3: Replace calling toggle with calling close and open
