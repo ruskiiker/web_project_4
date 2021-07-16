@@ -1,5 +1,5 @@
 // Variables
-const popup = document.getElementsByClassName('popup');
+const popups = document.getElementsByClassName('popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupActive = document.querySelector('.popup_active');
@@ -95,25 +95,40 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-// Opens popups.
-function openPopup(popup) {
-  popup.classList.add('popup_active');
+// Toggles popup.
+function togglePopup(popup) {
+  popup?.classList.toggle('popup_active');
+  if (popup?.classList.contains('popup_active')) {
+    document.addEventListener('keydown', (evt) => {
+      handleEscKey(evt);
+    })
+  } else {
+    document.removeEventListener('keydown', (evt) => {
+      handleEscKey(evt);
+    })
+  }
 }
+
+function handleEscKey(evt) { 
+  if(evt.key === 'Escape') {
+    togglePopup(document.querySelector('.popup_active'));
+  }
+ }
 
 // Opens edit popup.
 function openEditCardPopup() {
-  openPopup(popupEdit);
+  togglePopup(popupEdit);
   fillEditProfilePopupInputs();
 }
 
 // Opens add popup.
 function openAddCardPopup() {
-  openPopup(popupAdd);
+  togglePopup(popupAdd);
 }
 
 //Opens image popup.
 function openImagePopup() {
-  openPopup(popupTypeImage);
+  togglePopup(popupTypeImage);
 }
 
 // Closes popups.
@@ -122,13 +137,7 @@ function closePopup(popup) {
 }
 
 // Closes popups with Esc.
-window.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    for (var i = 0; i < popup.length; i++) {
-      popup[i].classList.remove('popup_active');
-    }
-  }
-})
+
 
 // Closes edit popup.
 function closefillEditProfilePopupInputs() {
@@ -146,8 +155,8 @@ function closeImageProfile() {
 }
 
 // Closes popups with outer click.
-for (var i = 0; i < popup.length; i++) {
-  popup[i].addEventListener('click', function (evt) {
+for (let i = 0; i < popups.length; i++) {
+  popups[i].addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup')) {
       this.classList.remove('popup_active');
       evt.stopPropagation();
