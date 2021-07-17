@@ -1,8 +1,5 @@
-# Practicum Project 4
-A simple, responsive front-end webpage containing image cards with photos of the US, enabling to edit basic information.
-
 ## Overview
-The webpage was developed fully based in a design on Figma.
+A webpage enabling users to add, like and delete cards about destinations contaning images and descriptions. It contains modals enabling to modify the user profile, insert new cards and view the destinations' images. The forms have JavaScript form validation built-in. It was developed fully based in a Figma design. 
 
 ## Usage
 BEM Methodology https://en.bem.info
