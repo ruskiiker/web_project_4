@@ -75,7 +75,7 @@ function saveProfile(event) {
   event.preventDefault();
   title.textContent = nameInput.value;
   aboutMe.textContent = jobInput.value;
-  closefillEditProfilePopupInputs();
+  closeEditProfilePopup();
 }
 
 function saveAddCard(event) {
@@ -86,8 +86,7 @@ function saveAddCard(event) {
   }
   renderCard(card, cardList);
   closeAddProfile();
-  captionInput.value = ''
-  linkInput.value = ''
+  addForm.reset();
 }
 
 function fillEditProfilePopupInputs() {
@@ -95,25 +94,21 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-// Toggles popup with Esc.
+// Toggles popup, adds Escape key event listener.
 function togglePopup(popup) {
   popup?.classList.toggle('popup_active');
   if (popup?.classList.contains('popup_active')) {
     document.addEventListener('keydown', (evt) => {
       handleEscKey(evt);
     })
-  } else {
-    document.removeEventListener('keydown', (evt) => {
-      handleEscKey(evt);
-    })
   }
 }
 
-function handleEscKey(evt) { 
-  if(evt.key === 'Escape') {
+function handleEscKey(evt) {
+  if (evt.key === 'Escape') {
     togglePopup(document.querySelector('.popup_active'));
   }
- }
+}
 
 // Opens edit popup.
 function openEditCardPopup() {
@@ -131,13 +126,8 @@ function openImagePopup() {
   togglePopup(popupTypeImage);
 }
 
-// Closes popups.
-function closePopup(popup) {
-  popup.classList.remove('popup_active');
-}
-
 // Closes edit popup.
-function closefillEditProfilePopupInputs() {
+function closeEditProfilePopup() {
   closePopup(popupEdit)
 }
 
@@ -163,7 +153,7 @@ for (let i = 0; i < popups.length; i++) {
 
 editButton.addEventListener('click', openEditCardPopup);
 addButton.addEventListener('click', openAddCardPopup);
-modalEditClose.addEventListener('click', closefillEditProfilePopupInputs);
+modalEditClose.addEventListener('click', closeEditProfilePopup);
 modalAddClose.addEventListener('click', closeAddProfile);
 modalImageClose.addEventListener('click', closeImageProfile);
 editForm.addEventListener('submit', saveProfile);
