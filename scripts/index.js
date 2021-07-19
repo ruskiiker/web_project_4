@@ -94,9 +94,19 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-// Toggles popup, adds Escape key event listener.
-function togglePopup(popup) {
+// Opens popup, adds Escape key event listener.
+function openPopup(popup) {
   popup?.classList.toggle('popup_active');
+  if (popup?.classList.contains('popup_active')) {
+    document.addEventListener('keydown', (evt) => {
+      handleEscKey(evt);
+    })
+  }
+}
+
+// Closes popups, removes Escape key event listener.
+function closePopup(popup) {  
+  popup.classList.remove('popup_active'); 
   if (popup?.classList.contains('popup_active')) {
     document.addEventListener('keydown', (evt) => {
       handleEscKey(evt);
@@ -106,24 +116,24 @@ function togglePopup(popup) {
 
 function handleEscKey(evt) {
   if (evt.key === 'Escape') {
-    togglePopup(document.querySelector('.popup_active'));
+    openPopup(document.querySelector('.popup_active'));
   }
 }
 
 // Opens edit popup.
 function openEditCardPopup() {
-  togglePopup(popupEdit);
+  openPopup(popupEdit);
   fillEditProfilePopupInputs();
 }
 
 // Opens add popup.
 function openAddCardPopup() {
-  togglePopup(popupAdd);
+  openPopup(popupAdd);
 }
 
 //Opens image popup.
 function openImagePopup() {
-  togglePopup(popupTypeImage);
+  openPopup(popupTypeImage);
 }
 
 // Closes edit popup.
