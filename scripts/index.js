@@ -106,7 +106,7 @@ function openPopup(popup) {
 
 // Closes popups, removes Escape key event listener.
 function closePopup(popup) {  
-  popup.classList.remove('popup_active'); 
+  popup?.classList.remove('popup_active'); 
   if (popup?.classList.contains('popup_active')) {
     document.addEventListener('keydown', (evt) => {
       handleEscKey(evt);
