@@ -108,12 +108,12 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup?.classList.remove('popup_active');
   if (popup?.classList.contains('popup_active')) {
-    document.removeEventListener('keydown', (evt) => {
-      handleEscKey(evt);
-    })
+    document.removeEventListener('keydown');
+    handleEscKey(evt);
   }
 }
 
+// Closes the active popup when pressing Escape.
 function handleEscKey(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_active'));
