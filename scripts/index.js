@@ -1,4 +1,3 @@
-import '../pages/index.css';
 import cards from './cards.js';
 import validation from './validation.js';
 import FormValidator from './FormValidator.js';
