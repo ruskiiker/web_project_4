@@ -1,3 +1,9 @@
+import '../pages/index.css';
+import cards from './cards.js';
+import validation from './cards.js';
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
 // Variables
 const popups = document.getElementsByClassName('popup');
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -163,3 +169,6 @@ modalAddClose.addEventListener('click', closeAddProfile);
 modalImageClose.addEventListener('click', closeImageProfile);
 editForm.addEventListener('submit', saveProfile);
 addForm.addEventListener('submit', saveAddCard);
+
+editformValidator.enableValidation();
+cardformValidator.enableValidation();

@@ -69,3 +69,7 @@ enableValidation({
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_active",
 });
+
+consteditFormValidator = new formValidator(validationConfig, editFormModalWindow);
+
+export default validation;

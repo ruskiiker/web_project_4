@@ -8,7 +8,7 @@ HTML5
 ECMAScript
 
 ## Contributing
-This project has been individually developed by 'ruskiiker', and is public in the framework of the Yandex Practicum web-programming course.
+This project has been developed individually by 'ruskiiker', and is public in the framework of the Yandex Practicum web-programming course.
 
 ## Project Link
 https://ruskiiker.github.io/web_project_4
