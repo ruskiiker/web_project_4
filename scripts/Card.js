@@ -43,6 +43,7 @@ this._element
 querySelector('card__delete-button')
 .classList.toggle('card__delete-button_is-active')
 }
+
 _handlePreviewPicture() {
 this._element
 querySelector('popup__image')

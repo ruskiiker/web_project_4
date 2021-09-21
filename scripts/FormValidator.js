@@ -9,6 +9,8 @@ this._inactiveButtonClass = settings.inactiveButtonClass;
 this._inputErrorClass = settings.inputErrorClass;
 this._errorClass = settings.errorClass;
 this._form = formElement;
+this._inputList = [...this._formElement.querySelectorAll(this._inputSelector)];
+this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     }    
  
     _setEventListeners () {
