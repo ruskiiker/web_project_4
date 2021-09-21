@@ -5,28 +5,31 @@ class Card {
         this._cardSelector = cardSelector;
     };
 
-_getTemplate( {
-    const template = document
-    .querySelector(this._cardSelector)
-    .content.querySelector('.card')
+_getTemplate() {
+    return document
+    .querySelector(this._cardSelector);
+    .content.querySelector('.card');
     .cloneNode(true);
+}
 
-    this._element = template;
-};
+getView() {
+    this._element = this.getTemplate();
+    this._setEventListeners();
+}
 
 _setEventListeners () {
-    this._element
-    .querySelector('.card__like-button');
-    .addEventListener('click', () => this._handleLikeIcon.());
-    
-    this._element
-    .querySelector('.card__delete-button');
-    .addEventListener('click', () => this._handleDeleteCard.());
+  this.element
+  querySelector('card__like-button')
+  .addEventListener('click', this._likeButton)
 
-    this._element
-    .querySelector('.card__image');
-    .addEventListener('click', () =>  this._handlePreviewPicture.());
-};
+  this.element
+  .querySelector('card__delete-button')
+  .addEventListener('click', this._deleteButton)
+
+  this.element
+  .querySelector('popup__image')
+  .addEventListener('click', this._popupImage)
+}
 
 _handleLikeIcon() {
 this._element
@@ -35,13 +38,16 @@ querySelector('card__like-button');
 }
 
 _handleDeleteCard() {
-
+this._element
+querySelector('card__delete-button');
+.classList.toggle('card__delete-button_is-active');
 }
 
 _handlePreviewPicture() {
-    
+this._element
+querySelector('popup__image');
+.classList.toggle('popup__image_is-active');
 }
-
 
 generateCard() {
 this._element = this.getTemplate();
@@ -49,6 +55,5 @@ this._setEventListeners();
 this._formElement.querySelector('.card_image').style.backgroundImage = `url(${this.link})`;
 this._formElement.querySelector('.card_title').textContent = this.text;
 }
-
 
 export default Card;

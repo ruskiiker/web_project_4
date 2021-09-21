@@ -1,41 +1,52 @@
 class FormValidator {
-    constructor(settings, formElement) {
+
+    constructor(settings, this._form) {
     /* Attaching classes and selectors from the object Settings
     to reference within methods in this file. */
 this._inputSelector = settings.inputSelector;
-this._submitButtonSelector = settings._submitButtonSelector;
-this._inactiveButtonClass = settings._inactiveButtonClass;
+this._submitButtonSelector = settings.submitButtonSelector;
+this._inactiveButtonClass = settings.inactiveButtonClass;
 this._inputErrorClass = settings.inputErrorClass;
 this._errorClass = settings.errorClass;
-this._popupElement = _popupElement;
-this._formElement = this.popupElement.querySelector(this._formSelector);
+this._form = formElement;
     }    
+ 
+    _setEventListeners () {
+        this._inputList = [...this._form.querySelectorAll(this._inputSelector)];
+        this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
-    const editFormValidator = new FormValidator(settings, editForm);
-    const addFormValidator = new FormValidator(settings, addForm);
+        inputList.forEach((input) => {
+            input.addEventListener('input', (evt) => {
+                // Check validity.
+                this._checkInputValidity(this._form, input, settings);
+                // Toggle the button.
+                this._toggleButton(inputList, submitButton, settings);
+            });
+        });
+    }
 
-    _showInputError = (formElement, input) => {
-        const errorSpan = formElement.querySelector(`#${input.id}-error`);
+    _showInputError = (this._form, input) => {
+        const errorSpan = this._form.querySelector(`#${input.id}-error`);
         // Add error message/class
         errorSpan.textContent = input.validationMessage;
         errorSpan.classList.add(this._errorClass);
         input.classList.add(this._inputErrorClass);
     };
 
-    _hideInputError = (formElement, input) => {
-        const errorSpan = this._formElement.querySelector(`#${input.id}-error`);
+    _hideInputError = (this._form, input) => {
+        const errorSpan = this._this._form.querySelector(`#${input.id}-error`);
         // Add error message/class
         errorSpan.textContent = '';
         errorSpan.classList.remove(this._errorClass);
         input.classList.remove(this._inputErrorClass);
     };
 
-    _checkInputValidity = (formElement, input, settings) => {
+    _checkInputValidity = (this._form, input, settings) => {
         if (input.validity.valid) {
-            return hideInputError(input, formElement, settings);
+            return hideInputError(input, this._form, settings);
         } else {
             // Not valid.
-            return showInputError(input, formElement, settings);
+            return showInputError(input, this._form, settings);
         }
     };
 
@@ -52,27 +63,22 @@ this._formElement = this.popupElement.querySelector(this._formSelector);
             buttonElement.disabled = true;
             buttonElement.classList.add(this._inactiveButtonClass);
         }
-    };
-    
-    _setEventListeners () {
-        const inputList = [...formElement.querySelectorAll(this._inputSelector)];
-        const submitButton = formElement.querySelector(this._submitButtonSelector);
-        inputList.forEach((input) => {
-            input.addEventListener('input', (evt) => {
-                // Check validity.
-                this._checkInputValidity(formElement, input, settings);
-                // Toggle the button.
-                this._toggleButton(inputList, submitButton, settings);
-            });
-        });
-    }
+    };   
 
 // Method implementing the form validation.
 enableValidation() {
-    this._formElement.addEventListener('submit', event => {       
+    this._form.addEventListener('submit', evt => {       
         evt.preventDefault(); 
     });
         this._setEventListeners();
 };
+
+}
+
+const editFormValidator = new FormValidator(settings, editForm);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(settings, addForm);
+addFormValidator.enableValidation();
 
 export default FormValidator;
