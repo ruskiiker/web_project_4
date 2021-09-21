@@ -1,4 +1,5 @@
 class Card {
+    
     constructor(data, cardSelector) {
         this._text = data.name;
         this._link = data.link;
@@ -7,9 +8,9 @@ class Card {
 
 _getTemplate() {
     return document
-    .querySelector(this._cardSelector);
-    .content.querySelector('.card');
-    .cloneNode(true);
+    .querySelector(this._cardSelector)
+    .content.querySelector('.card')
+    .cloneNode(true)
 }
 
 getView() {
@@ -33,27 +34,28 @@ _setEventListeners () {
 
 _handleLikeIcon() {
 this._element
-querySelector('card__like-button');
-.classList.toggle('card__like-button_is-active');
+querySelector('card__like-button')
+.classList.toggle('card__like-button_is-active')
 }
 
 _handleDeleteCard() {
 this._element
-querySelector('card__delete-button');
-.classList.toggle('card__delete-button_is-active');
+querySelector('card__delete-button')
+.classList.toggle('card__delete-button_is-active')
 }
-
 _handlePreviewPicture() {
 this._element
-querySelector('popup__image');
-.classList.toggle('popup__image_is-active');
+querySelector('popup__image')
+.classList.toggle('popup__image_is-active')
 }
 
 generateCard() {
 this._element = this.getTemplate();
 this._setEventListeners();
-this._formElement.querySelector('.card_image').style.backgroundImage = `url(${this.link})`;
-this._formElement.querySelector('.card_title').textContent = this.text;
+this._formElement.querySelector('.card__image').style.backgroundImage = `url(${this.link})`;
+this._formElement.querySelector('.card__title').textContent = this.text;
+}
+
 }
 
 export default Card;

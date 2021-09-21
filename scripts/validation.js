@@ -73,7 +73,4 @@ enableValidation({
 const editFormElement = popupEdit.querySelector('popup__form');
 const addFormElement = popupAdd.querySelector('popup__form');
 
-const editFormValidator(validationSettings, editFormElement); 
-const addFormValidator(validationSettings, addFormElement); 
-
 export default validation;

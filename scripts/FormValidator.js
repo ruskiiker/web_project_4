@@ -1,6 +1,6 @@
 class FormValidator {
 
-    constructor(settings, this._form) {
+    constructor(settings, formElement) {
     /* Attaching classes and selectors from the object Settings
     to reference within methods in this file. */
 this._inputSelector = settings.inputSelector;
@@ -25,7 +25,7 @@ this._form = formElement;
         });
     }
 
-    _showInputError = (this._form, input) => {
+    _showInputError = (formElement, input) => {
         const errorSpan = this._form.querySelector(`#${input.id}-error`);
         // Add error message/class
         errorSpan.textContent = input.validationMessage;
@@ -33,15 +33,15 @@ this._form = formElement;
         input.classList.add(this._inputErrorClass);
     };
 
-    _hideInputError = (this._form, input) => {
-        const errorSpan = this._this._form.querySelector(`#${input.id}-error`);
+    _hideInputError = (formElement, input) => {
+        const errorSpan = this._form.querySelector(`#${input.id}-error`);
         // Add error message/class
         errorSpan.textContent = '';
         errorSpan.classList.remove(this._errorClass);
         input.classList.remove(this._inputErrorClass);
     };
 
-    _checkInputValidity = (this._form, input, settings) => {
+    _checkInputValidity = (formElement, input, settings) => {
         if (input.validity.valid) {
             return hideInputError(input, this._form, settings);
         } else {
@@ -56,12 +56,12 @@ this._form = formElement;
     _toggleButton = (inputList, buttonElement, settings) => {
         if (this._hasValidInput(inputList)) {
             // Make button enabled.
-            buttonElement.disabled = false;
-            buttonElement.classList.remove(this._inactiveButtonClass);
+            this._buttonElement.disabled = false;
+            this._buttonElement.classList.remove(this._inactiveButtonClass);
         } else {
             // Make button disabled.
-            buttonElement.disabled = true;
-            buttonElement.classList.add(this._inactiveButtonClass);
+            this._buttonElement.disabled = true;
+            this._buttonElement.classList.add(this._inactiveButtonClass);
         }
     };   
 
