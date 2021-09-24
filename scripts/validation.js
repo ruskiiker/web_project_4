@@ -1,4 +1,4 @@
-const showInputError = (input, formElement, { errorClass, inputErrorClass }) => {
+export const showInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = input.validationMessage;
@@ -6,7 +6,7 @@ const showInputError = (input, formElement, { errorClass, inputErrorClass }) => 
     input.classList.add(inputErrorClass);
 };
 
-const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
+export const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = '';
@@ -14,7 +14,7 @@ const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => 
     input.classList.remove(inputErrorClass);
 };
 
-const checkInputValidity = (formElement, input, settings) => {
+export const checkInputValidity = (formElement, input, settings) => {
     if (input.validity.valid) {
         return hideInputError(input, formElement, settings);
     } else {
@@ -23,10 +23,10 @@ const checkInputValidity = (formElement, input, settings) => {
     }
 };
 
-const hasValidInput = (inputList) =>
+export const hasValidInput = (inputList) =>
     inputList.every((input) => input.validity.valid);
 
-const toggleButton = (inputList, buttonElement, settings) => {
+export const toggleButton = (inputList, buttonElement, settings) => {
     if (hasValidInput(inputList)) {
         // Make button enabled.
         buttonElement.disabled = false;
@@ -38,7 +38,7 @@ const toggleButton = (inputList, buttonElement, settings) => {
     }
 };
 
-const setEventListeners = (formElement, settings) => {
+export const setEventListeners = (formElement, settings) => {
     const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
     const submitButton = formElement.querySelector(settings.submitButtonSelector);
     inputList.forEach((input) => {
@@ -51,6 +51,7 @@ const setEventListeners = (formElement, settings) => {
     });
 };
 
+// Method implementing the form validation.
 const enableValidation = (settings) => {
     const formElements = [...document.querySelectorAll(settings.formSelector)];
     formElements.forEach((formElement) => {
@@ -69,8 +70,5 @@ enableValidation({
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_active",
 });
-
-const editFormElement = popupEdit.querySelector('popup__form');
-const addFormElement = popupAdd.querySelector('popup__form');
 
 export default validation;
