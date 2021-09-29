@@ -25,7 +25,7 @@ const modalAddClose = document.querySelector('.popup__close_type_add');
 const modalImageClose = document.querySelector('.popup__close_type_image');
 const inputs = document.querySelectorAll('.popup__input');
 
-const validationElements = {
+const settings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -219,8 +219,9 @@ addForm.addEventListener('submit', saveAddCard);
   const editFormElement = popupEdit.querySelector('popup__form');
   const addFormElement = popupAdd.querySelector('popup__form');
 
-const editFormValidator = new FormValidator(validationElements, popupEdit);
-const addFormValidator  = new FormValidator(validationElements, popupAdd);
+console.log(settings);
+const editFormValidator = new FormValidator(settings, popupEdit);
+const addFormValidator  = new FormValidator(settings, popupAdd);
 
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+editFormValidator.enableValidation(settings);
+addFormValidator.enableValidation(settings);
