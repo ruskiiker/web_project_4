@@ -149,11 +149,6 @@ for (let i = 0; i < popups.length; i++) {
     /// Prepend the card element to the <ul class=".places-list"> (wrapper). 
   } 
    
-  initialCards.forEach((card) => { 
-    renderCard(card, cardList); 
-    // CardList also = <ul class=".places-list">. 
-  }); 
-   
   function createCard(card) { 
     // Reference the template element. 
     const cardTemplate = document.querySelector('#card-template').content.querySelector('.card'); 
@@ -202,7 +197,7 @@ const cardSelector = '#card-template';
 
 /*-----------------------------------------------------------------------------------------*
  *                                     Event listeners                                     * 
- *-----------------------------------------------------------------------------------------*/
+ *-----------------------------------------------------------------------------------------*/ 
 
 editButton.addEventListener('click', openEditCardPopup);
 addButton.addEventListener('click', openAddCardPopup);
@@ -216,12 +211,11 @@ addForm.addEventListener('submit', saveAddCard);
  *                                     Form validation                                     * 
  *-----------------------------------------------------------------------------------------*/
 
-  const editFormElement = popupEdit.querySelector('popup__form');
-  const addFormElement = popupAdd.querySelector('popup__form');
+const editFormElement = popupEdit.querySelector('popup__form');
+const addFormElement  = popupAdd.querySelector('popup__form');
 
-console.log(settings);
 const editFormValidator = new FormValidator(settings, popupEdit);
 const addFormValidator  = new FormValidator(settings, popupAdd);
 
-editFormValidator.enableValidation(settings);
-addFormValidator.enableValidation(settings);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();

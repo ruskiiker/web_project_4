@@ -1,4 +1,4 @@
-export const showInputError = (input, formElement, { errorClass, inputErrorClass }) => {
+    const showInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = input.validationMessage;
@@ -6,7 +6,7 @@ export const showInputError = (input, formElement, { errorClass, inputErrorClass
     input.classList.add(inputErrorClass);
 };
 
-export const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
+    const hideInputError = (input, formElement, { errorClass, inputErrorClass }) => {
     const errorSpan = formElement.querySelector(`#${input.id}-error`);
     // Add error message/class
     errorSpan.textContent = '';
@@ -14,7 +14,7 @@ export const hideInputError = (input, formElement, { errorClass, inputErrorClass
     input.classList.remove(inputErrorClass);
 };
 
-export const checkInputValidity = (formElement, input, settings) => {
+    const checkInputValidity = (formElement, input, settings) => {
     if (input.validity.valid) {
         return hideInputError(input, formElement, settings);
     } else {
@@ -23,10 +23,10 @@ export const checkInputValidity = (formElement, input, settings) => {
     }
 };
 
-export const hasValidInput = (inputList) =>
+    const hasValidInput = (inputList) =>
     inputList.every((input) => input.validity.valid);
 
-export const toggleButton = (inputList, buttonElement, settings) => {
+    const toggleButton = (inputList, buttonElement, settings) => {
     if (hasValidInput(inputList)) {
         // Make button enabled.
         buttonElement.disabled = false;
@@ -38,7 +38,7 @@ export const toggleButton = (inputList, buttonElement, settings) => {
     }
 };
 
-export const setEventListeners = (formElement, settings) => {
+    const setEventListeners = (formElement, settings) => {
     const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
     const submitButton = formElement.querySelector(settings.submitButtonSelector);
     inputList.forEach((input) => {
@@ -51,9 +51,7 @@ export const setEventListeners = (formElement, settings) => {
     });
 };
 
-// Method implementing the form validation.
 const enableValidation = (settings) => {
-    const formElements = [...document.querySelectorAll(settings.formSelector)];
     formElements.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) =>
             evt.preventDefault());
