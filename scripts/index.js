@@ -1,13 +1,13 @@
-/*-----------------------------------------------------------------------------------------*
- *                                         Modules                                         * 
+/*-----------------------------------------------------------------------------------------
+ *                                                   Modules                                                                                                           
  *-----------------------------------------------------------------------------------------*/
 
 import initialCards from './cards.js';
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
-/*-----------------------------------------------------------------------------------------*
- *                             Index of variables declarations                             * 
+/*-----------------------------------------------------------------------------------------
+ *                                    Index of variables declarations                                   
  *-----------------------------------------------------------------------------------------*/
 
 // Popup elements.
@@ -48,8 +48,8 @@ const cardList = document.querySelector('.places__list');
 // Card elements.
 const card = document.querySelector('.card');
 
-/*-----------------------------------------------------------------------------------------*
- *                                         Profile                                         * 
+/*-----------------------------------------------------------------------------------------
+ *                                                    Profile                                                       
  *-----------------------------------------------------------------------------------------*/
 
 const profile = {
@@ -69,8 +69,8 @@ function fillEditProfilePopupInputs() {
   jobInput.value = profile.about;
 }
 
-/*-----------------------------------------------------------------------------------------*
- *                                         Popups                                          * 
+/*-----------------------------------------------------------------------------------------
+ *                                                   Popups                                                                      
  *-----------------------------------------------------------------------------------------*/
 
 // Opens popup, adds Escape key event listener.
@@ -135,8 +135,8 @@ for (let i = 0; i < popups.length; i++) {
   });
 }
 
-/*-----------------------------------------------------------------------------------------*
- *                                           Cards                                         * 
+/*-----------------------------------------------------------------------------------------
+ *                                                      Cards                                                      
  *-----------------------------------------------------------------------------------------*/
 
   initialCards.forEach((card) => {
@@ -146,57 +146,31 @@ for (let i = 0; i < popups.length; i++) {
 
   function renderCard(card, wrapper) { 
     wrapper.prepend(createCard(card)); 
+    wrapper.prepend
     /// Prepend the card element to the <ul class=".places-list"> (wrapper). 
   } 
    
-  function createCard(card) { 
-    // Reference the template element. 
-    const cardTemplate = document.querySelector('#card-template').content.querySelector('.card'); 
-    // Create the card element. 
-    const cardElement = cardTemplate.cloneNode(true); 
-    const cardImage = cardElement.querySelector('.card__image'); 
-    const cardTitle = cardElement.querySelector('.card__title'); 
-    const deleteButton = cardElement.querySelector('.card__delete-button'); 
-    const likeButton = cardElement.querySelector('.card__like-button'); 
-   
-    cardTitle.textContent = card.name; 
-    cardImage.style.backgroundImage = `url(${card.link})`; 
-    cardImage.alt = card.name; 
-   
-    deleteButton.addEventListener('click', () => { 
-      const listItem = deleteButton.closest('.card'); 
-      listItem.remove(); 
-    }); 
-   
-    likeButton.addEventListener('click', event => { 
-      event.target.classList.toggle('card__like-button_is-active'); 
-    }); 
-   
-    cardImage.addEventListener('click', () => { 
-      popupImage.src = card.link; 
-      popupImage.alt = card.name; 
-      popupImageTitle.textContent = card.name; 
-      openImagePopup(popupImage); 
-    }); 
-    return cardElement; 
+  function createItem(cardInfo) { 
+    return new Card({ 
+      data: cardInfo, 
+      handleCardClick: (name, link) => { 
+        imagePopup.open(name, link) 
+      }, 
+      handleDeleteClick: (cardInfo) => { 
+        deleteCardPopup.open(cardInfo); 
+      }, 
+      likeHandler: (cardElement, cardID) => { 
+       cardCountLikes(cardElement, cardID); 
+      } 
+    }, userId, 
+     cardTemplate).createCard() 
   } 
-
-  function saveAddCard(event) {
-    event.preventDefault();
-    const card = {
-      name: captionInput.value,
-      link: linkInput.value
-    }
-    renderCard(card, cardList);
-    closeAddProfile();
-    addForm.reset();
-  }
 
 // Sets the cards' template.
 const cardSelector = '#card-template';
 
-/*-----------------------------------------------------------------------------------------*
- *                                     Event listeners                                     * 
+/*-----------------------------------------------------------------------------------------
+ *                                              Event listeners                                                 
  *-----------------------------------------------------------------------------------------*/ 
 
 editButton.addEventListener('click', openEditCardPopup);
@@ -207,8 +181,8 @@ modalImageClose.addEventListener('click', closeImageProfile);
 editForm.addEventListener('submit', saveProfile);
 addForm.addEventListener('submit', saveAddCard);
 
-/*-----------------------------------------------------------------------------------------*
- *                                     Form validation                                     * 
+/*-----------------------------------------------------------------------------------------
+ *                                             Form validation                                                 
  *-----------------------------------------------------------------------------------------*/
 
 const editFormElement = popupEdit.querySelector('popup__form');
