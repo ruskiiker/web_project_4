@@ -141,7 +141,7 @@ for (let i = 0; i < popups.length; i++) {
  
   initialCards.forEach((card) => { 
   
-  var cardObject = new Card(card)
+  cardObject = new Card(card)
   renderCard(cardObject, cardList); 
     // CardList = <ul class=".places-list">. 
   }); 
