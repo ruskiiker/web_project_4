@@ -147,10 +147,10 @@ for (let i = 0; i < popups.length; i++) {
   }); 
  
   function renderCard(cardObject, wrapper) {  
-    wrapper.prepend(cardObject.generateCard()); 
+    wrapper.prepend(createCard(cardObject)); 
     /// Prepend the card element to the <ul class=".places-list"> (wrapper).  
   }  
- 
+
   function saveAddCard(event) { 
     event.preventDefault(); 
     const card = { 
