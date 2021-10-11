@@ -35,7 +35,7 @@ class Card {
  }
 
  getView() {
-    this._element = this.getTemplate();
+    this._element = this._getTemplate();
     this._setEventListeners();
  }
 
@@ -72,7 +72,7 @@ _handlePreviewPicture() {
  }
 
  generateCard() {
-    this._element = this.getTemplate();
+    this._element = this._getTemplate();
     this._setEventListeners();
     this._formElement.querySelector('.card__image').style.backgroundImage = `url(${this.link})`;
     this._formElement.querySelector('.card__title').textContent = this.text;

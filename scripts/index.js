@@ -140,45 +140,15 @@ for (let i = 0; i < popups.length; i++) {
  *-----------------------------------------------------------------------------------------*/ 
  
   initialCards.forEach((card) => { 
-    renderCard(card, cardList); 
+  
+  var cardObject = new Card(card)
+  renderCard(cardObject, cardList); 
     // CardList = <ul class=".places-list">. 
   }); 
  
-  function renderCard(card, wrapper) {  
-    wrapper.prepend(createCard(card));  
+  function renderCard(cardObject, wrapper) {  
+    wrapper.prepend(cardObject.generateCard()); 
     /// Prepend the card element to the <ul class=".places-list"> (wrapper).  
-  }  
-    
-  function createCard(card) {  
-    // Reference the template element.  
-    const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');  
-    // Create the card element.  
-    const cardElement = cardTemplate.cloneNode(true);  
-    const cardImage = cardElement.querySelector('.card__image');  
-    const cardTitle = cardElement.querySelector('.card__title');  
-    const deleteButton = cardElement.querySelector('.card__delete-button');  
-    const likeButton = cardElement.querySelector('.card__like-button');  
-    
-    cardTitle.textContent = card.name;  
-    cardImage.style.backgroundImage = `url(${card.link})`;  
-    cardImage.alt = card.name;  
-    
-    deleteButton.addEventListener('click', () => {  
-      const listItem = deleteButton.closest('.card');  
-      listItem.remove();  
-    });  
-    
-    likeButton.addEventListener('click', event => {  
-      event.target.classList.toggle('card__like-button_is-active');  
-    });  
-    
-    cardImage.addEventListener('click', () => {  
-      popupImage.src = card.link;  
-      popupImage.alt = card.name;  
-      popupImageTitle.textContent = card.name;  
-      openImagePopup(popupImage);  
-    });  
-    return cardElement;  
   }  
  
   function saveAddCard(event) { 
