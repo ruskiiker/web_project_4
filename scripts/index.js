@@ -42,11 +42,12 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_description'); 
 const linkInput = document.querySelector('.popup__input_type_link'); 
 const editForm = document.querySelector('.popup_type_edit'); 
-const addForm = document.querySelector('.popup_type_add'); 
+const addPopup = document.querySelector('.popup_type_add'); 
 const cardList = document.querySelector('.places__list'); 
- 
+const addForm = document.querySelector('.popup__form_type_add');
+
 // Card elements. 
-const card = document.querySelector('.card'); 
+// const card = document.querySelector('.card'); 
  
 /*-----------------------------------------------------------------------------------------* 
  *                                         Profile                                           
@@ -61,6 +62,8 @@ function saveProfile(event) {
   event.preventDefault(); 
   title.textContent = nameInput.value; 
   aboutMe.textContent = jobInput.value; 
+  profile.name = nameInput.value;
+  profile.about = jobInput.value;
   closeEditProfilePopup(); 
 } 
  
@@ -138,32 +141,31 @@ for (let i = 0; i < popups.length; i++) {
 /*-----------------------------------------------------------------------------------------* 
  *                                           Cards                                           
  *-----------------------------------------------------------------------------------------*/ 
- 
-  initialCards.forEach((card) => { 
-  
-  cardObject = new Card(card)
-  renderCard(cardObject, cardList); 
-    // CardList = <ul class=".places-list">. 
-  }); 
- 
-  function renderCard(cardObject, wrapper) {  
-    wrapper.prepend(createCard(cardObject)); 
-    /// Prepend the card element to the <ul class=".places-list"> (wrapper).  
-  }  
+ // Sets the cards' template. 
+const cardSelector = '#card-template';
 
-  function saveAddCard(event) { 
-    event.preventDefault(); 
-    const card = { 
-      name: captionInput.value, 
-      link: linkInput.value 
-    } 
-    renderCard(card, cardList); 
-    closeAddProfile(); 
-    addForm.reset(); 
-  } 
- 
-// Sets the cards' template. 
-const cardSelector = '#card-template'; 
+
+  /// Prepend the card element to the <ul class=".places-list"> (wrapper).  
+const renderCard = (data, wrap) => {
+  const card = new Card(data, cardSelector);
+  wrap.prepend(card.getView()); 
+};
+
+// CardList = <ul class=".places-list">. 
+initialCards.forEach((data) => {  
+  renderCard(data, cardList)
+});
+
+function saveAddCard(event) {
+  event.preventDefault();
+  const card = {
+    name: captionInput.value,
+    link: linkInput.value
+  }
+  renderCard(card, cardList);
+  closeAddProfile();
+  addForm.reset(); 
+}
  
 /*-----------------------------------------------------------------------------------------* 
  *                                     Event listeners                                       
@@ -175,14 +177,14 @@ modalEditClose.addEventListener('click', closeEditProfilePopup);
 modalAddClose.addEventListener('click', closeAddProfile); 
 modalImageClose.addEventListener('click', closeImageProfile); 
 editForm.addEventListener('submit', saveProfile); 
-addForm.addEventListener('submit', saveAddCard); 
+addPopup.addEventListener('submit', saveAddCard); 
  
 /*-----------------------------------------------------------------------------------------* 
  *                                     Form validation                                      
  *-----------------------------------------------------------------------------------------*/ 
  
-const editFormElement = popupEdit.querySelector('popup__form'); 
-const addFormElement  = popupAdd.querySelector('popup__form'); 
+/* const editFormElement = popupEdit.querySelector('popup__form'); 
+const addFormElement  = popupAdd.querySelector('popup__form'); */
  
 const editFormValidator = new FormValidator(settings, popupEdit); 
 const addFormValidator  = new FormValidator(settings, popupAdd); 
