@@ -47,7 +47,7 @@ const cardList = document.querySelector('.places__list');
 const addForm = document.querySelector('.popup__form_type_add');
 
 // Card elements. 
-// const card = document.querySelector('.card'); 
+const card = document.querySelector('.card'); 
  
 /*-----------------------------------------------------------------------------------------* 
  *                                         Profile                                           
@@ -144,8 +144,7 @@ for (let i = 0; i < popups.length; i++) {
  // Sets the cards' template. 
 const cardSelector = '#card-template';
 
-
-  /// Prepend the card element to the <ul class=".places-list"> (wrapper).  
+// Prepend the card element to the <ul class=".places-list"> (wrapper).  
 const renderCard = (data, wrap) => {
   const card = new Card(data, cardSelector);
   wrap.prepend(card.getView()); 
@@ -183,8 +182,8 @@ addPopup.addEventListener('submit', saveAddCard);
  *                                     Form validation                                      
  *-----------------------------------------------------------------------------------------*/ 
  
-/* const editFormElement = popupEdit.querySelector('popup__form'); 
-const addFormElement  = popupAdd.querySelector('popup__form'); */
+const editFormElement = popupEdit.querySelector('popup__form'); 
+const addFormElement  = popupAdd.querySelector('popup__form');
  
 const editFormValidator = new FormValidator(settings, popupEdit); 
 const addFormValidator  = new FormValidator(settings, popupAdd); 

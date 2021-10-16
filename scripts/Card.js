@@ -1,5 +1,7 @@
 // Opens popup, adds Escape key event listener.
-function openPopup(popup) { 
+function openPopup(popup, link, text) { 
+    popup.querySelector('.popup__image').src = link;
+    popup.querySelector('.popup__image-caption').innerHTML = text;   
     popup.classList.add('popup_active'); 
     document.addEventListener('keydown',
       handleEscKey) 
@@ -42,6 +44,19 @@ class Card {
     return this._element;
  }
 
+ _deleteButton () {
+this.closest('.card').remove();
+ } 
+
+ _likeButton () {
+   this.classList.toggle('card__like-button_is-active'); 
+} 
+
+_popupImage(evt) {
+   const popup = document.querySelector('.popup_type_image')
+   openPopup(popup, evt.currentTarget.link, evt.currentTarget.text)  
+} 
+
  _setEventListeners () {
     this._element
     .querySelector('.card__like-button')
@@ -51,15 +66,10 @@ class Card {
     .querySelector('.card__delete-button')
     .addEventListener('click', this._deleteButton)
 
-    this._element
-    .querySelector('.card__image')
-    .addEventListener('click', this._popupImage)
- }
-
- _handleLikeIcon() {
-    this._element
-    .querySelector('.card__like-button')
-    .classList.toggle('.card__like-button_is-active')
+    const imageCard = this._element.querySelector('.card__image')
+    imageCard.addEventListener('click', this._popupImage)
+    imageCard.link = this._link;
+    imageCard.text = this._text;
  }
 
  _handleDeleteCard() {
