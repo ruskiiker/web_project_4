@@ -2,7 +2,8 @@
  *                                         Modules                                           
  *-----------------------------------------------------------------------------------------*/ 
  
-import initialCards from './cards.js'; 
+import initialCards from './initial-cards.js'; 
+import { openPopup, closePopup } from './utils.js'; 
 import FormValidator from './FormValidator.js'; 
 import Card from './Card.js'; 
  
@@ -14,16 +15,12 @@ import Card from './Card.js';
 const popups = document.getElementsByClassName('popup'); 
 const popupEdit = document.querySelector('.popup_type_edit'); 
 const popupAdd = document.querySelector('.popup_type_add'); 
-const popupActive = document.querySelector('.popup_active'); 
 const popupTypeImage = document.querySelector('.popup_type_image'); 
-const popupImage = document.querySelector('.popup__image'); 
-const popupImageTitle = document.querySelector('.popup__image-caption'); 
 const editButton = document.querySelector('.profile__edit-button'); 
 const addButton = document.querySelector('.profile__add-button'); 
 const modalEditClose = document.querySelector('.popup__close_type_edit'); 
 const modalAddClose = document.querySelector('.popup__close_type_add'); 
 const modalImageClose = document.querySelector('.popup__close_type_image'); 
-const inputs = document.querySelectorAll('.popup__input'); 
  
 const settings = { 
   formSelector: ".popup__form", 
@@ -75,27 +72,6 @@ function fillEditProfilePopupInputs() {
 /*-----------------------------------------------------------------------------------------* 
  *                                         Popups                                            
  *-----------------------------------------------------------------------------------------*/ 
- 
-// Opens popup, adds Escape key event listener. 
-function openPopup(popup) {  
-  popup.classList.add('popup_active');  
-  document.addEventListener('keydown', 
-    handleEscKey)  
-}  
- 
-// Closes popup, removes Escape key event listener. 
-function closePopup(popup) {  
-  popup.classList.remove('popup_active');  
-  document.removeEventListener('keydown', 
-    handleEscKey)  
-}  
- 
-// Closes the active popup when pressing Escape. 
-function handleEscKey(evt) { 
-  if (evt.key === 'Escape') { 
-    closePopup(document.querySelector('.popup_active')); 
-  } 
-} 
  
 // Opens edit popup. 
 function openEditCardPopup() { 
@@ -181,9 +157,6 @@ addPopup.addEventListener('submit', saveAddCard);
 /*-----------------------------------------------------------------------------------------* 
  *                                     Form validation                                      
  *-----------------------------------------------------------------------------------------*/ 
- 
-const editFormElement = popupEdit.querySelector('popup__form'); 
-const addFormElement  = popupAdd.querySelector('popup__form');
  
 const editFormValidator = new FormValidator(settings, popupEdit); 
 const addFormValidator  = new FormValidator(settings, popupAdd); 

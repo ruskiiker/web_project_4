@@ -1,24 +1,13 @@
+import { handleEscKey} from './utils.js'; 
+
 // Opens popup, adds Escape key event listener.
-function openPopup(popup, link, text) { 
+function openImagePopup(popup, link, text) { 
     popup.querySelector('.popup__image').src = link;
-    popup.querySelector('.popup__image-caption').innerHTML = text;   
+    popup.querySelector('.popup__image').alt = 'Image preview';
+    popup.querySelector('.popup__image-caption').textContent = text;   
     popup.classList.add('popup_active'); 
     document.addEventListener('keydown',
       handleEscKey) 
-  } 
-  
-  // Closes popup, removes Escape key event listener.
-  function closePopup(popup) { 
-    popup.classList.remove('popup_active'); 
-    document.removeEventListener('keydown',
-      handleEscKey) 
-  } 
-  
-  // Closes the active popup when pressing Escape.
-  function handleEscKey(evt) {
-    if (evt.key === 'Escape') {
-      closePopup(document.querySelector('.popup_active'));
-    }
   }
 
 class Card {
@@ -54,7 +43,7 @@ this.closest('.card').remove();
 
 _popupImage(evt) {
    const popup = document.querySelector('.popup_type_image')
-   openPopup(popup, evt.currentTarget.link, evt.currentTarget.text)  
+   openImagePopup(popup, evt.currentTarget.link, evt.currentTarget.text)  
 } 
 
  _setEventListeners () {
