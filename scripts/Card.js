@@ -1,6 +1,6 @@
 import { handleEscKey} from './utils.js'; 
 
-// Opens popup, adds Escape key event listener.
+// Opens image popup, adds Escape key event listener.
 function openImagePopup(popup, link, text) { 
     popup.querySelector('.popup__image').src = link;
     popup.querySelector('.popup__image').alt = 'Image preview';
