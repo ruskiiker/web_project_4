@@ -25,7 +25,7 @@ class Card {
     .cloneNode(true)
  }
 
- getView() {
+getView() {
     this._element = this._getTemplate();
     this._setEventListeners();
     this._element.querySelector('.card__image').style.backgroundImage = `url(${this._link})`;
@@ -46,7 +46,7 @@ _popupImage(evt) {
    openImagePopup(popup, evt.currentTarget.link, evt.currentTarget.text)  
 } 
 
- _setEventListeners () {
+_setEventListeners () {
     this._element
     .querySelector('.card__like-button')
     .addEventListener('click', this._likeButton)
@@ -61,7 +61,7 @@ _popupImage(evt) {
     imageCard.text = this._text;
  }
 
- _handleDeleteCard() {
+_handleDeleteCard() {
     this._element
     .querySelector('.card__delete-button')
     .classList.toggle('.card__delete-button_is-active')

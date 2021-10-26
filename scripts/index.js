@@ -43,9 +43,6 @@ const addPopup = document.querySelector('.popup_type_add');
 const cardList = document.querySelector('.places__list'); 
 const addForm = document.querySelector('.popup__form_type_add');
 
-// Card elements. 
-const card = document.querySelector('.card'); 
- 
 /*-----------------------------------------------------------------------------------------* 
  *                                         Profile                                           
  *-----------------------------------------------------------------------------------------*/ 
