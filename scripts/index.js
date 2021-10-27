@@ -81,11 +81,6 @@ function openAddCardPopup() {
   openPopup(popupAdd); 
 } 
  
-//Opens image popup. 
-function openImagePopup() { 
-  openPopup(popupTypeImage); 
-} 
- 
 // Closes edit popup. 
 function closeEditProfilePopup() { 
   closePopup(popupEdit) 
