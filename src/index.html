@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Project 7</title>
+</head>
+
+<body class="page">
+
+    <div class="page__content">
+        <header class="header">
+            <img id="logo" alt="Around the U.S." class="header__logo" />
+        </header>
+
+        <main class="content">
+            <section class="profile page__section">
+                <img id="avatar" class="profile__image" alt="Stepan O. Makarov" />
+                <div class="profile__container">
+                    <div class="profile__container-text">
+                        <h1 class="profile__title"></h1>
+                        <button class="profile__edit-button" type="button" aria-label="edit-profile-button"></button>
+                        <p class="profile__description"></p>
+                    </div>
+                </div>
+                <button class="profile__add-button" type="button" aria-label="add-button"></button>
+            </section>
+            <section class="places page__section">
+                <ul class="places__list">
+                </ul>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021 Around the U.S.</p>
+        </footer>
+
+        <div class="popup popup_type_edit">
+            <div class="popup__content">
+                <button class="popup__close popup__close_type_edit" type="button"></button>
+                <h3 class="popup__title">Edit profile</h3>
+                <form class="popup__form popup__form_type_edit" id="profile-name" name="edit-profile">
+                    <input class="popup__input popup__input_type_name" id="profile-name-input" type="text" name="name"
+                        placeholder="Name" minlength="2" maxlength="40" required novalidate>
+                    <span class="popup__error" id="profile-name-input-error"></span>
+                    <input class="popup__input popup__input_type_description" id="profile-text" type="text"
+                        name="description" placeholder="Profession" minlength="2" maxlength="200" required novalidate>
+                    <span class="popup__error" id="profile-text-error"></span>
+                    <button class="button popup__button" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_type_add">
+            <div class="popup__content">
+                <button class="popup__close popup__close_type_add " type="button"></button>
+                <h3 class="popup__title">New place</h3>
+                <form class="popup__form popup__form_type_add" name="edit-profile">
+                    <input class="popup__input popup__input_type_caption" id="card-title" type="text" name="name"
+                        placeholder="Title" minlength="1" maxlength="30" required novalidate>
+                    <span class="popup__error" id="card-title-error"></span>
+                    <input class="popup__input popup__input_type_link" id="card-url" type="url" name="link"
+                        placeholder="New Place" required novalidate>
+                    <span class="popup__error" id="card-url-error"></span>
+                    <button class="button popup__button popup__button_disabled" type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_type_image">
+            <div class="popup__content-image">
+                <button class="popup__close popup__close_type_image" type="button"
+                    aria-label="close-form-button"></button>
+                <figure class="figure">
+                    <img class="popup__image" src="#" alt="image">
+                    <figcaption class="popup__image-caption"></figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <template id="card-template">
+        <li class="card">
+            <button class="card__delete-button" type="button" aria-label="delete-button"></button>
+            <div class="card__image"></div>
+            <div class="card__description">
+                <h2 class="card__title"></h2>
+                <button class="card__like-button" type="button" aria-label="like-button"></button>
+            </div>
+        </li>
+    </template>
+
+</body>
+
+</html>

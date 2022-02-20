@@ -52,14 +52,14 @@ class FormValidator {
 
   _setEventListeners() {  
     this._inputList.forEach(inputElement =>
-      inputElement.addEventListener("input", () => {
+      inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
       }));
   }
 
   enableValidation() {
-    this._formElement.addEventListener("submit", evt => evt.preventDefault());
+    this._formElement.addEventListener('submit', evt => evt.preventDefault());
     this._setEventListeners();
   }
 

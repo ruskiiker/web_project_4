@@ -1,0 +1,39 @@
+{
+  "name": "web_project_4",
+  "version": "1.0.0",
+  "description": "A webpage enabling users to add, like and delete cards about destinations contaning images and descriptions. It contains modals enabling to modify the user profile, insert new cards and view the destinations' images. The forms have JavaScript form validation built-in. It was developed fully based in a Figma design.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruskiiker/web_project_4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruskiiker/web_project_4/issues"
+  },
+  "homepage": "https://github.com/ruskiiker/web_project_4#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "cssnano": "^5.0.16",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "postcss-loader": "^6.2.1",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "core-js": "^3.20.3"
+  }
+}

@@ -6,6 +6,7 @@ BEM Methodology https://en.bem.info
 CSS3
 HTML5
 ECMAScript
+Webpack
 
 ## Contributing
 This project has been developed individually by 'ruskiiker', and is public in the framework of the Yandex Practicum web-programming course.
