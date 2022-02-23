@@ -1,5 +1,5 @@
-import PopupWithImage from '../components/popup-with-image.js';
-import {popupImage} from '../pages/index';
+import PopupWithImage from '../components/PopupWithImage.js';
+import {popupImage} from '../utils/constants.js';
 
 class Card {
   constructor(data, cardSelector) {

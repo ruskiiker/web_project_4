@@ -5,80 +5,37 @@
 import './index.css';
 import logoSrc from '../images/logo.svg';
 import avatarSrc from '../images/avatar.png';
-import initialCards from '../components/initial-cards.js';
-import FormValidator from '../components/form-validator.js';
-import Card from '../components/card.js';
-import PopupWithForm from '../components/popup-with-form.js';
-import PopupWithImage from '../components/popup-with-image.js';
-import Section from '../components/section.js';
-import UserInfo from '../components/user-info.js';
+import initialCards from '../utils/initial-cards.js';
+import FormValidator from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import { logoImage, avatarImage, popups, inputName, inputProfession, popupEdit, popupAdd, 
+  popupImage, editButton, addButton, popupClose, addCardButton, settings, name, profession } from '../utils/constants.js';
 
 /*-----------------------------------------------------------------------------------------*
- *                             Index of variables declarations
+ *                                         Images
  *-----------------------------------------------------------------------------------------*/
 
-// HTML Images.
-const logoImage = document.getElementById('logo');
 logoImage.src = logoSrc;
-const avatarImage = document.getElementById('avatar');
 avatarImage.src = avatarSrc;
-
-// Popup elements.
-const popups = document.getElementsByClassName('popup');
-const inputName = document.querySelector('.popup__input_type_name');
-const inputProfession = document.querySelector('.popup__input_type_description');
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
-export const popupImage = document.querySelector('.popup_type_image');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const popupClose = document.querySelector('.popup__close');
-
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_active',
-};
-
-// Profile elements.
-const name = document.querySelector('.profile__title');
-const profession = document.querySelector('.profile__description');
 
 /*-----------------------------------------------------------------------------------------*
  *                                         Profile
  *-----------------------------------------------------------------------------------------*/
 
 const userInfo = new UserInfo({
-  name: 'Stepan O. Makarov',
-  profession: 'Vice Admiral and Commander'
+  name: name,
+  profession: profession
 });
+
 const userData = userInfo.getUserInfo();
 name.textContent = userData.name;
-profession.textContent = userData.profession;
-
-/*-----------------------------------------------------------------------------------------*
- *                                         Popups
- *-----------------------------------------------------------------------------------------*/
-
-// Closes popup with 'x' button.
-popupClose.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('popup')) {
-    this.classList.remove('popup_active');
-  }
-});
-
-// Closes popups with outer click.
-for (let i = 0; i < popups.length; i++) {
-  popups[i].addEventListener('click', function (evt) {
-    if (evt.target.classList.contains('popup')) {
-      this.classList.remove('popup_active');
-      evt.stopPropagation();
-    }
-  });
-}
+inputName.value = userData.name;
+profession.textContent = userData.profession;  
+inputProfession.value = userData.profession;
 
 /*-----------------------------------------------------------------------------------------*
  *                                           Cards
@@ -99,9 +56,8 @@ const placeCards = new Section({
   containerSelector: 'places__list',
 });
 
-initialCards.forEach((cardData) => {
-  createNewCard(cardData);
-});
+
+placeCards.renderItems(initialCards)
 
 const handleFormEdit = () => {
   userInfo.setUserInfo(inputName.value, inputProfession.value);
@@ -114,6 +70,8 @@ const handleFormEdit = () => {
 const handleFormAdd = (data) => {
   createNewCard(data);
   addPopupPreview.close();
+  addCardButton.disabled = true;
+  addCardButton.classList.add('popup__button_disabled'); 
 };
 
 /*-----------------------------------------------------------------------------------------*
