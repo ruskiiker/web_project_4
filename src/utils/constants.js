@@ -7,7 +7,6 @@ export const logoImage = document.getElementById('logo');
 export const avatarImage = document.getElementById('avatar');
 
 // Popup elements.
-export const popups = document.getElementsByClassName('popup');
 export const inputName = document.querySelector('.popup__input_type_name');
 export const inputProfession = document.querySelector('.popup__input_type_description');
 export const popupEdit = document.querySelector('.popup_type_edit');
@@ -15,7 +14,6 @@ export const popupAdd = document.querySelector('.popup_type_add');
 export const popupImage = document.querySelector('.popup_type_image');
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
-export const popupClose = document.querySelector('.popup__close');
 export const addCardButton = document.getElementById('button__add-card');
 
 

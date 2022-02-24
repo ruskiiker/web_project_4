@@ -12,8 +12,8 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
-import { logoImage, avatarImage, popups, inputName, inputProfession, popupEdit, popupAdd, 
-  popupImage, editButton, addButton, popupClose, addCardButton, settings, name, profession } from '../utils/constants.js';
+import { logoImage, avatarImage, inputName, inputProfession, popupEdit, popupAdd, 
+  popupImage, editButton, addButton, addCardButton, settings, name, profession } from '../utils/constants.js';
 
 /*-----------------------------------------------------------------------------------------*
  *                                         Images
@@ -55,7 +55,6 @@ const placeCards = new Section({
   },
   containerSelector: 'places__list',
 });
-
 
 placeCards.renderItems(initialCards)
 
