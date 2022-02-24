@@ -23,5 +23,4 @@ setPopupImage(image, caption) {
 
 }
 
-
 export default PopupWithImage;
