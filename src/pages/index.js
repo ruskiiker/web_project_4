@@ -31,20 +31,19 @@ const userInfo = new UserInfo({
   profession: profession
 });
 
-const userData = userInfo.getUserInfo();
-name.textContent = userData.name;
-inputName.value = userData.name;
-profession.textContent = userData.profession;  
-inputProfession.value = userData.profession;
-
 /*-----------------------------------------------------------------------------------------*
  *                                           Cards
  *-----------------------------------------------------------------------------------------*/
 // Sets the cards' template.
 const cardSelector = '#card-template';
 
+const handleOpenPopup = (link , text) =>  {
+  const popupWithImage = new PopupWithImage({popupSelector: popupImage, image: link, caption: text});
+  popupWithImage.open(link, text);
+}
+
 const createNewCard = (data) => {
-  const card = new Card(data, cardSelector);
+  const card = new Card(data, cardSelector, handleOpenPopup);
   placeCards.addItem(card.getView());
   return card;
 };
@@ -59,10 +58,7 @@ const placeCards = new Section({
 placeCards.renderItems(initialCards)
 
 const handleFormEdit = () => {
-  userInfo.setUserInfo(inputName.value, inputProfession.value);
-  const userData = userInfo.getUserInfo();
-  name.textContent = userData.name;
-  profession.textContent = userData.profession;
+  userInfo.setUserInfo(inputName.value, inputProfession.value);  
   editPopupPreview.close()
 };
 

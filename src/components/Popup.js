@@ -1,6 +1,6 @@
 class PopUp {
-  constructor(popupSelector) {
-    this._popupElement = popupSelector;
+  constructor(popupElement) {
+    this._popupElement = popupElement;
     this._handleEscKey = this._handleEscKey.bind(this);
   }
 

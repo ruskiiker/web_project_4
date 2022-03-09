@@ -15,9 +15,9 @@ setPopupImage(image, caption) {
   this._caption = caption;
 }
 
-  open() {
-    this._imageElement.src = this._image
-    this._captionElement.textContent = this._caption    
+  open(image, caption) {
+    this._imageElement.src = image
+    this._captionElement.textContent = caption    
     super.open();
   }
 

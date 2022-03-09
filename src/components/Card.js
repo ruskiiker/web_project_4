@@ -1,11 +1,11 @@
-import PopupWithImage from '../components/PopupWithImage.js';
-import {popupImage} from '../utils/constants.js';
-
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleOpenPopup) {
     this._text = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleOpenPopup = handleOpenPopup;
+    this._element = this._getTemplate();
+    this._cardLikeButton = this._element.querySelector('.card__like-button');
   }
 
   _getTemplate() {
@@ -13,7 +13,6 @@ class Card {
   }
 
   getView() {
-    this._element = this._getTemplate();
     this._setEventListeners();
     this._element.querySelector('.card__image').style.backgroundImage = `url(${this._link})`;
     this._element.querySelector('.card__title').textContent = this._text;
@@ -25,16 +24,15 @@ class Card {
   }
 
   _likeButton() {
-    this._element.querySelector('.card__like-button').classList.toggle('card__like-button_is-active');
+    this._cardLikeButton.classList.toggle('card__like-button_is-active');
   }
-  
+
   _handleCardClick() {
-    const popupWithImage = new PopupWithImage({popupSelector: popupImage, image: this._link, caption: this._text});
-    popupWithImage.open();
-}
+    this._handleOpenPopup(this._link, this._text);
+  }
 
   _setEventListeners() {
-    this._element.querySelector('.card__like-button').addEventListener('click', () => {
+    this._cardLikeButton.addEventListener('click', () => {
       this._likeButton();
     });
 
