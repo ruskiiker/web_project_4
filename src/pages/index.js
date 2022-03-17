@@ -12,8 +12,21 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
-import { logoImage, avatarImage, inputName, inputProfession, popupEdit, popupAdd, 
-  popupImage, editButton, addButton, addCardButton, settings, name, profession } from '../utils/constants.js';
+import {
+  logoImage,
+  avatarImage,
+  inputName,
+  inputProfession,
+  popupEdit,
+  popupAdd,
+  popupImage,
+  editButton,
+  addButton,
+  addCardButton,
+  settings,
+  name,
+  profession
+} from '../utils/constants.js';
 
 /*-----------------------------------------------------------------------------------------*
  *                                         Images
@@ -37,9 +50,14 @@ const userInfo = new UserInfo({
 // Sets the cards' template.
 const cardSelector = '#card-template';
 
-const handleOpenPopup = (link , text) =>  {
-  const popupWithImage = new PopupWithImage({popupSelector: popupImage, image: link, caption: text});
+const handleOpenPopup = (link, text) => {
+  const popupWithImage = new PopupWithImage({
+    popupSelector: popupImage,
+    image: link,
+    caption: text
+  });
   popupWithImage.open(link, text);
+  popupWithImage.setEventListeners();
 }
 
 const createNewCard = (data) => {
@@ -58,15 +76,14 @@ const placeCards = new Section({
 placeCards.renderItems(initialCards)
 
 const handleFormEdit = () => {
-  userInfo.setUserInfo(inputName.value, inputProfession.value);  
+  const values = editPopupPreview._getInputValues()
+  userInfo.setUserInfo(values.name, values.description);
   editPopupPreview.close()
 };
 
 const handleFormAdd = (data) => {
   createNewCard(data);
   addPopupPreview.close();
-  addCardButton.disabled = true;
-  addCardButton.classList.add('popup__button_disabled'); 
 };
 
 /*-----------------------------------------------------------------------------------------*
@@ -74,17 +91,14 @@ const handleFormAdd = (data) => {
  *-----------------------------------------------------------------------------------------*/
 
 const addPopupPreview = new PopupWithForm({
-  popupSelector: popupAdd,
+  popupElement: popupAdd,
   handleFormSubmit: handleFormAdd
 })
 const editPopupPreview = new PopupWithForm({
-  popupSelector: popupEdit,
+  popupElement: popupEdit,
   handleFormSubmit: handleFormEdit
 })
 
-const imagePopupPreview = new PopupWithImage({
-  popupSelector: popupImage
-})
 
 /*-----------------------------------------------------------------------------------------*
  *                                     Event listeners
@@ -99,7 +113,6 @@ editButton.addEventListener('click', () => {
 
 addPopupPreview.setEventListeners();
 editPopupPreview.setEventListeners();
-imagePopupPreview.setEventListeners();
 
 /*-----------------------------------------------------------------------------------------*
  *                                     Form validation
