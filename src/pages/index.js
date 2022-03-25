@@ -50,14 +50,14 @@ const userInfo = new UserInfo({
 // Sets the cards' template.
 const cardSelector = '#card-template';
 
+const popupWithImage = new PopupWithImage({
+  popupSelector: popupImage
+})
+
+popupWithImage.setEventListeners();
+
 const handleOpenPopup = (link, text) => {
-  const popupWithImage = new PopupWithImage({
-    popupSelector: popupImage,
-    image: link,
-    caption: text
-  });
   popupWithImage.open(link, text);
-  popupWithImage.setEventListeners();
 }
 
 const createNewCard = (data) => {
@@ -75,8 +75,7 @@ const placeCards = new Section({
 
 placeCards.renderItems(initialCards)
 
-const handleFormEdit = () => {
-  const values = editPopupPreview._getInputValues()
+const handleFormEdit = (values) => {
   userInfo.setUserInfo(values.name, values.description);
   editPopupPreview.close()
 };
