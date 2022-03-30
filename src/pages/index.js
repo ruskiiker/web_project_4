@@ -106,8 +106,12 @@ const editPopupPreview = new PopupWithForm({
 addButton.addEventListener('click', () => {
   addPopupPreview.open()
 });
+
 editButton.addEventListener('click', () => {
-  editPopupPreview.open()
+const info = userInfo.getUserInfo()
+inputName.value = info.name
+inputProfession.value = info.profession
+editPopupPreview.open()
 });
 
 addPopupPreview.setEventListeners();
