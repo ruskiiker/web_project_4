@@ -82,6 +82,7 @@ const handleFormEdit = (values) => {
 
 const handleFormAdd = (data) => {
   createNewCard(data);
+
   addPopupPreview.close();
 };
 
@@ -104,6 +105,7 @@ const editPopupPreview = new PopupWithForm({
  *-----------------------------------------------------------------------------------------*/
 
 addButton.addEventListener('click', () => {
+  addFormValidator._toggleButtonState()
   addPopupPreview.open()
 });
 
