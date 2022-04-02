@@ -105,7 +105,7 @@ const editPopupPreview = new PopupWithForm({
  *-----------------------------------------------------------------------------------------*/
 
 addButton.addEventListener('click', () => {
-  addFormValidator._toggleButtonState()
+  addFormValidator.toggleButtonState()
   addPopupPreview.open()
 });
 
